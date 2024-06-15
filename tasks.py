@@ -6,33 +6,61 @@ class CustomTasks:
     def __tip_section(self):
         return "If you do your BEST WORK, I'll give you a $10,000 commission!"
 
-    def task_1_name(self, agent, var1, var2):
+    def architecture_task(self, agent, tools, user_input):
         return Task(
             description=dedent(
                 f"""
-            Do something as part of task 1
-            
-            {self.__tip_section()}
-    
-            Make sure to use the most recent data as possible.
-    
-            Use this variable: {var1}
-            And also this variable: {var2}
-        """
+            Provide a high-level solution architecture for the given problem: {user_input}. 
+            Your final answer must include a clear overview and major components involved.
+            {self.__tip_section()} 
+            """
             ),
+            expected_output='A document outlining the high-level architecture.',
+            tools=tools,
             agent=agent,
         )
 
-    def task_2_name(self, agent):
+    def implementation_task(self, agent, tools, context):
         return Task(
             description=dedent(
                 f"""
-            Take the input from task 1 and do something with it.
-                                       
+            Implement the solution as per the architect's overview.
+            Your final answer must include the code implementing the solution.                          
             {self.__tip_section()}
-
-            Make sure to do something else.
-        """
+            """
             ),
+            expected_output='Python code implementing the solution.',
+            tools=tools,
             agent=agent,
+            context=context
+        )
+
+    def testing_task(self, agent, tools, context):
+        return Task(
+            description=dedent(
+                f"""
+            Write and run test cases for the implemented code. 
+            Your final answer must include test scripts and test results.                          
+            {self.__tip_section()}
+            """
+            ),
+            expected_output='Test scripts and test results for the implemented code.',
+            tools=tools,
+            agent=agent,
+            context=context
+        )
+
+    def reviewing_task(self, agent, tools, context):
+        return Task(
+            description=dedent(
+                f"""
+            Review the work done by each agent at each step.
+            Your final answer must include feedback and necessary revisions.
+            {self.__tip_section()}
+            """
+            ),
+            expected_output='Feedback and revisions for each step of the process.',
+            tools=tools,
+            agent=agent,
+            context=context
         )

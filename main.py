@@ -7,42 +7,42 @@ from textwrap import dedent
 from agents import CustomAgents
 from tasks import CustomTasks
 
-from langchain.tools import DuckDuckGoSearchRun
+from crewai_tools import SerperDevTool, FileReadTool
 
-search_tool = DuckDuckGoSearchRun()
+search_tool = SerperDevTool()
+file_read_tool = FileReadTool()
+
+# Tools
+architect_tools = [file_read_tool]
+programmer_tools = [file_read_tool]
+tester_tools = [file_read_tool]
+reviewer_tools = [file_read_tool]
 
 os.environ["OPENAI_API_KEY"] = config("OPENAI_API_KEY")
-os.environ["OPENAI_ORGANIZATION"] = config("OPENAI_ORGANIZATION_ID")
+
 
 class CustomCrew:
-    def __init__(self, var1, var2):
-        self.var1 = var1
-        self.var2 = var2
-
+    def __init__(self, user_input):
+        self.user_input = user_input
     def run(self):
-        # Define your custom agents and tasks in agents.py and tasks.py
         agents = CustomAgents()
         tasks = CustomTasks()
 
-        # Define your custom agents and tasks here
-        custom_agent_1 = agents.agent_1_name()
-        custom_agent_2 = agents.agent_2_name()
+        # Agents
+        architect_agent = agents.architect_agent(architect_tools)
+        programmer_agent = agents.programmer_agent(programmer_tools)
+        tester_agent = agents.tester_agent(tester_tools)
+        reviewer_agent = agents.reviewer_agent(reviewer_tools)
 
-        # Custom tasks include agent name and variables as input
-        custom_task_1 = tasks.task_1_name(
-            custom_agent_1,
-            self.var1,
-            self.var2,
-        )
+        # Tasks
+        architecture_task = tasks.architecture_task(architect_agent, architect_tools, self.user_input)
+        implementation_task = tasks.implementation_task(programmer_agent, programmer_tools, [architecture_task])
+        testing_task = tasks.testing_task(tester_agent, tester_tools, [implementation_task])
+        reviewing_task = tasks.reviewing_task(reviewer_agent, reviewer_tools, [architecture_task, implementation_task, testing_task])
 
-        custom_task_2 = tasks.task_2_name(
-            custom_agent_2,
-        )
-
-        # Define your custom crew here
         crew = Crew(
-            agents=[custom_agent_1, custom_agent_2],
-            tasks=[custom_task_1, custom_task_2],
+            agents=[architect_agent, programmer_agent, tester_agent, reviewer_agent],
+            tasks=[architecture_task, implementation_task, testing_task, reviewing_task],
             verbose=True,
         )
 
@@ -50,16 +50,15 @@ class CustomCrew:
         return result
 
 
-# This is the main function that you will use to run your custom crew.
-if __name__ == "__main__":
-    print("## Welcome to Crew AI Template")
-    print("-------------------------------")
-    var1 = input(dedent("""Enter variable 1: """))
-    var2 = input(dedent("""Enter variable 2: """))
 
-    custom_crew = CustomCrew(var1, var2)
-    result = custom_crew.run()
+if __name__ == "__main__":
+    print("## Welcome to Devain##")
+    print("-------------------------------")
+    user_input = input("What problem do you want us to solve?")
+    crew = CustomCrew(user_input)
+    result = crew.run()
+    
     print("\n\n########################")
-    print("## Here is you custom crew run result:")
+    print("## Here is you crew run result:")
     print("########################\n")
     print(result)

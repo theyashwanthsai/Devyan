@@ -8,7 +8,7 @@ class CustomAgents:
     def __init__(self):
         self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4o", temperature=0.7)
 
-    def architect_agent(self):
+    def architect_agent(self, tools):
         return Agent(
             role="Software Architect",
             backstory=dedent(f"""\
@@ -17,26 +17,26 @@ class CustomAgents:
             providing a solid foundation for implementation."""),
             goal=dedent(f"""\
             Provide a high-level solution overview for a given problem"""),
-            # tools=[tool_1, tool_2],
+            tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.OpenAIGPT4,
         )
 
-    def programmer_agent(self):
+    def programmer_agent(self, tools):
         return Agent(
             role="Software Programmer",
             backstory=dedent(f"""\
-            You have a keen eye for detail and a knack for translating high-level design solutions into robust,
+            You havea keen eye for detail and a knack for translating high-level design solutions into robust,
             efficient code."""),
             goal=dedent(f"""Implement the solution provided by the architect"""),
-            # tools=[tool_1, tool_2],
+            tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.OpenAIGPT4,
         )
 
-    def tester_agent(self):
+    def tester_agent(self, tools):
         return Agent(
             role="Software Tester",
             backstory=dedent(f"""\
@@ -44,21 +44,21 @@ class CustomAgents:
             standards through rigorous testing."""),
             goal = dedent("""\
             Write and run test cases for the code implemented by the programmer"""),
-            # tools=[tool_1, tool_2],
+            tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.OpenAIGPT4,
         )
 
-    def reviewer_agent(self):
+    def reviewer_agent(self, tools):
         return Agent(
             role="Software Reviewer",
             backstory=dedent("""\
             With a critical eye, you review each step of the development process, ensuring quality and consistency."""),
             goal=dedent("""\
             Review the work of each agent at each step"""),
-            # tools=[tool_1, tool_2],
+            tools=tools,            
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.OpenAIGPT4,
         )
