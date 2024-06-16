@@ -8,18 +8,19 @@ from agents import CustomAgents
 from tasks import CustomTasks
 
 from crewai_tools import SerperDevTool, FileReadTool
-from tools.file_write import FileWriteTool 
+from tools.file_write import FileWriteTool
+from tools.directory_write import DirWriteTool
 
 search_tool = SerperDevTool()
 file_read_tool = FileReadTool()
 file_write_tool = FileWriteTool.file_write_tool
-
+dir_write_tool = DirWriteTool.dir_write_tool
 
 # Tools
-architect_tools = [file_read_tool, file_write_tool]
-programmer_tools = [file_read_tool, file_write_tool]
-tester_tools = [file_read_tool, file_write_tool]
-reviewer_tools = [file_read_tool, file_write_tool]
+architect_tools = [file_read_tool, file_write_tool, dir_write_tool]
+programmer_tools = [file_read_tool, file_write_tool, dir_write_tool]
+tester_tools = [file_read_tool, file_write_tool, dir_write_tool]
+reviewer_tools = [file_read_tool, file_write_tool, dir_write_tool]
 
 os.environ["OPENAI_API_KEY"] = config("OPENAI_API_KEY")
 

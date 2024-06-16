@@ -12,7 +12,8 @@ class CustomTasks:
                 f"""
             Provide a high-level solution architecture for the given problem: {user_input}. 
             Your final answer must include a clear overview and major components involved.
-            {self.__tip_section()} 
+            {self.__tip_section()}
+            You have access to tools which can read files, write files and create directories 
             """
             ),
             expected_output='A document outlining the high-level architecture.',
@@ -27,9 +28,10 @@ class CustomTasks:
             Implement the solution as per the architect's overview.
             Your final answer must include the code implementing the solution.                          
             {self.__tip_section()}
+            You have access to tools which can read files, write files and create directories 
             """
             ),
-            expected_output='Python code implementing the solution.',
+            expected_output='Python code (py files) implementing the solution.',
             tools=tools,
             agent=agent,
             context=context
@@ -42,9 +44,10 @@ class CustomTasks:
             Write and run test cases for the implemented code. 
             Your final answer must include test scripts and test results.                          
             {self.__tip_section()}
+            You have access to tools which can read files, write files and create directories 
             """
             ),
-            expected_output='Test scripts and test results for the implemented code.',
+            expected_output='Test scripts and test document for the implemented code.',
             tools=tools,
             agent=agent,
             context=context
@@ -57,6 +60,7 @@ class CustomTasks:
             Review the work done by each agent at each step.
             Your final answer must include feedback and necessary revisions.
             {self.__tip_section()}
+            You have access to tools which can read files, write files and create directories 
             """
             ),
             expected_output='Feedback and revisions for each step of the process.',
