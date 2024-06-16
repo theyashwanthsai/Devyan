@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore")
+
 import os
 from crewai import Agent, Task, Crew, Process
 from langchain_openai import ChatOpenAI
@@ -6,7 +9,6 @@ from decouple import config
 from textwrap import dedent
 from agents import CustomAgents
 from tasks import CustomTasks
-
 from crewai_tools import SerperDevTool, FileReadTool
 from tools.file_write import FileWriteTool
 from tools.directory_write import DirWriteTool
@@ -56,9 +58,9 @@ class CustomCrew:
 
 
 if __name__ == "__main__":
-    print("## Welcome to Devain##")
-    print("-------------------------------")
-    user_input = input("What problem do you want us to solve?")
+    print("\n####### Welcome to Devain #######")
+    print("---------------------------------")
+    user_input = input("What problem do you want us to solve?\n")
     crew = CustomCrew(user_input)
     result = crew.run()
     

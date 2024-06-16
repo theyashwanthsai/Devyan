@@ -1,12 +1,13 @@
 from crewai import Agent
 from textwrap import dedent
-from langchain.llms import OpenAI, Ollama
+from langchain_community.llms import OpenAI, Ollama
 from langchain_openai import ChatOpenAI
 
 
 class CustomAgents:
     def __init__(self):
         self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4o", temperature=0.7)
+        # self.Ollama = 
 
     def architect_agent(self, tools):
         return Agent(

@@ -5,6 +5,7 @@
 
 **Devain** is an AI-powered software development assistant that orchestrates a team of agents to solve programming tasks. It uses OpenAI's GPT-based agents to perform various roles such as architecture design, implementation, testing, and reviewing.
 
+![img](img.png)
 ## Features
 
 - **Architect Agent**: Designs the architecture of the solution based on the user input.
