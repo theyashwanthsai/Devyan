@@ -9,17 +9,18 @@ from decouple import config
 from textwrap import dedent
 from agents import CustomAgents
 from tasks import CustomTasks
-from crewai_tools import SerperDevTool, FileReadTool
+from crewai_tools import  FileReadTool
 from tools.file_write import FileWriteTool
 from tools.directory_write import DirWriteTool
+from langchain_community.tools import DuckDuckGoSearchRun
 
-search_tool = SerperDevTool()
+search_tool = DuckDuckGoSearchRun()
 file_read_tool = FileReadTool()
 file_write_tool = FileWriteTool.file_write_tool
 dir_write_tool = DirWriteTool.dir_write_tool
 
 # Tools
-architect_tools = [file_read_tool, file_write_tool, dir_write_tool]
+architect_tools = [search_tool, file_read_tool, file_write_tool, dir_write_tool]
 programmer_tools = [file_read_tool, file_write_tool, dir_write_tool]
 tester_tools = [file_read_tool, file_write_tool, dir_write_tool]
 reviewer_tools = [file_read_tool, file_write_tool, dir_write_tool]
@@ -60,7 +61,7 @@ class CustomCrew:
 if __name__ == "__main__":
     print("\n####### Welcome to Devain #######")
     print("---------------------------------")
-    user_input = input("What problem do you want us to solve?\n")
+    user_input = input("What problem do you want me to solve?\n")
     crew = CustomCrew(user_input)
     result = crew.run()
     

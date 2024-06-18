@@ -13,7 +13,7 @@ class CustomTasks:
             Provide a high-level solution architecture for the given problem: {user_input}. 
             Your final answer must include a clear overview and major components involved.
             {self.__tip_section()}
-            You have access to tools which can read files, write files and create directories 
+            You have access to tools which can search the internet, read files, write files and create directories 
             """
             ),
             expected_output='A document outlining the high-level architecture.',
@@ -59,11 +59,12 @@ class CustomTasks:
                 f"""
             Review the work done by each agent at each step.
             Your final answer must include feedback and necessary revisions.
+            You should also know how to run the application which can be useful to the users.
             {self.__tip_section()}
             You have access to tools which can read files, write files and create directories 
             """
             ),
-            expected_output='Feedback and revisions for each step of the process.',
+            expected_output='Feedback and revisions for each step of the process. Also a final document which has steps to run the code given which can serve as a documentation for users',
             tools=tools,
             agent=agent,
             context=context
