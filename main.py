@@ -59,7 +59,7 @@ class CustomCrew:
 
 
 if __name__ == "__main__":
-    print("\n####### Welcome to Devain #######")
+    print("\n####### Welcome to Devyan #######")
     print("---------------------------------")
     user_input = input("What problem do you want me to solve?\n")
     crew = CustomCrew(user_input)
