@@ -5,16 +5,18 @@ from textwrap import dedent
 class CustomTasks:
     def __tip_section(self):
         return "If you do your BEST WORK, I'll give you a $10,000 commission!"
-
-    def architecture_task(self, agent, tools, user_input):
+    def architecture_task(self, agent, tools, user_input, code_snippets):
+        code_context = "\n".join([snippet for snippet in code_snippets])
         return Task(
             description=dedent(
                 f"""
-            Provide a high-level solution architecture for the given problem: {user_input}. 
-            Your final answer must include a clear overview and major components involved.
-            {self.__tip_section()}
-            You have access to tools which can search the internet, read files, write files and create directories 
-            """
+                Provide a high-level solution architecture for the given problem: {user_input}. 
+                Your final answer must include a clear overview and major components involved.
+                {self.__tip_section()}
+                You have access to tools which can search the internet, read files, write files and create directories.
+                Here are some relevant code snippets from the existing codebase:
+                {code_context}
+                """
             ),
             expected_output='A document outlining the high-level architecture.',
             tools=tools,
@@ -25,18 +27,18 @@ class CustomTasks:
         return Task(
             description=dedent(
                 f"""
-            Implement the solution as per the architect's overview.
-            Your final answer must include the code implementing the solution.                          
-            {self.__tip_section()}
-            You have access to tools which can read files, write files and create directories 
-            """
+                Implement the solution as per the architect's overview.
+                Your final answer must include the code implementing the solution.                          
+                {self.__tip_section()}
+                You have access to tools which can read files, write files and create directories.
+                """
             ),
             expected_output='Python code (py files) implementing the solution.',
             tools=tools,
             agent=agent,
             context=context
         )
-
+        
     def testing_task(self, agent, tools, context):
         return Task(
             description=dedent(
