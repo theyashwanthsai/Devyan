@@ -101,21 +101,4 @@ devain/
 - [ ] Use pytoml
 
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="
-      https://api.star-history.com/svg?repos=theyashwanthsai/Devyan&type=Date&theme=dark
-    "
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="
-      https://api.star-history.com/svg?repos=theyashwanthsai/Devyan&type=Date
-    "
-  />
-  <img
-    alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=theyashwanthsai/Devyan&type=Date"
-  />
-</picture>
+[![Star History Chart](https://api.star-history.com/svg?repos=theyashwanthsai/Devyan&type=Date)](https://star-history.com/#theyashwanthsai/Devyan&Date)
