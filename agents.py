@@ -7,8 +7,8 @@ from langchain_openai import ChatOpenAI
 class CustomAgents:
     def __init__(self):
         self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4o", temperature=0.7)
-        # self.Ollama = 
-
+        # self.Ollama = ChatOpenAI(model_name="devainllama3", base_url = "http://localhost:11434/v1") 
+        
     def architect_agent(self, tools):
         return Agent(
             role="Software Architect",
@@ -21,7 +21,7 @@ class CustomAgents:
             tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT4,
+            llm=self.Ollama,
         )
 
     def programmer_agent(self, tools):
@@ -34,7 +34,7 @@ class CustomAgents:
             tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT4,
+            llm=self.Ollama,
         )
 
     def tester_agent(self, tools):
@@ -48,7 +48,7 @@ class CustomAgents:
             tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT4,
+            llm=self.Ollama,
         )
 
     def reviewer_agent(self, tools):
@@ -61,5 +61,5 @@ class CustomAgents:
             tools=tools,            
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT4,
+            llm=self.Ollama,
         )

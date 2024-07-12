@@ -3,7 +3,7 @@
 
 ## Overview
 
-**Devyan** is an AI-powered software development assistant that orchestrates a team of agents to solve programming tasks. It uses OpenAI's GPT-based agents to perform various roles such as architecture design, implementation, testing, and reviewing.
+**Devyan* is an AI-powered software development assistant that orchestrates a team of agents to solve programming tasks. It uses OpenAI's GPT-based agents to perform various roles such as architecture design, implementation, testing, and reviewing.
 
 ![img](img.png)
 ## Features
@@ -99,3 +99,23 @@ devain/
 - [x] Create Custom tool to create directory
 - [x] Change prompts in tasks, make it more detialed and clear
 - [ ] Use pytoml
+
+
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=theyashwanthsai/Devyan&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=theyashwanthsai/Devyan&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=theyashwanthsai/Devyan&type=Date"
+  />
+</picture>
