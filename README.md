@@ -23,6 +23,30 @@
 - `python-decouple` library
 - `crewai` library
 - OpenAI API Key
+- Milvus vector database
+  
+
+## Using Vector Database
+
+This project uses Milvus as a vector database to store and search for relevant code snippets based on the user's query. The `MilvusClient` class handles the connection and operations with the Milvus server.
+
+### Setting up Milvus
+
+1. Install Milvus:
+
+    ```sh
+    pip install pymilvus
+    ```
+
+2. Start Milvus server:
+    Follow the [Milvus installation guide](https://milvus.io/docs/install_standalone-docker.md) to set up and start the Milvus server.
+
+3. Configure the connection:
+    The `MilvusClient` class in `milvus_client.py` connects to the Milvus server running on `localhost` at port `19530` by default. You can change these settings in the `MilvusClient` class constructor.
+
+### Example Usage
+
+The `CustomCrew` class in `main.py` uses the `MilvusClient` to query for relevant code snippets based on the user's input. The retrieved code snippets are then used by various agents to perform their tasks.
 
 ## Installation
 
@@ -104,6 +128,7 @@ devain/
 - [ ] Add Agent Logs
 - [ ] Stackoverflow tool
 - [ ] Code Execution
+- [ ] Develop on existing codebase instead of generating new code every time
 
 
 [![Star History Chart](https://api.star-history.com/svg?repos=theyashwanthsai/Devyan&type=Date)](https://star-history.com/#theyashwanthsai/Devyan&Date)

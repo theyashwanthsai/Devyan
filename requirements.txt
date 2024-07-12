@@ -2,3 +2,5 @@ crewai
 crewai_tools
 langchain_openai
 python-decouple
+milvus
+pymilvus
