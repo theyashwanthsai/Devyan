@@ -21,7 +21,7 @@ class CustomAgents:
             tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.Ollama,
+            llm=self.OpenAIGPT4,
         )
 
     def programmer_agent(self, tools):
@@ -34,7 +34,7 @@ class CustomAgents:
             tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.Ollama,
+            llm=self.OpenAIGPT4,
         )
 
     def tester_agent(self, tools):
@@ -48,7 +48,7 @@ class CustomAgents:
             tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.Ollama,
+            llm=self.OpenAIGPT4,
         )
 
     def reviewer_agent(self, tools):
@@ -61,5 +61,5 @@ class CustomAgents:
             tools=tools,            
             allow_delegation=False,
             verbose=True,
-            llm=self.Ollama,
+            llm=self.OpenAIGPT4,
         )
