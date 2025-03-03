@@ -12,9 +12,11 @@ from tasks import CustomTasks
 from crewai_tools import  FileReadTool
 from tools.file_write import FileWriteTool
 from tools.directory_write import DirWriteTool
-from langchain_community.tools import DuckDuckGoSearchRun
+#from langchain_community.tools import DuckDuckGoSearchRun
 
-search_tool = DuckDuckGoSearchRun()
+from crewai_tools import SerperDevTool
+
+search_tool = SerperDevTool()
 file_read_tool = FileReadTool()
 file_write_tool = FileWriteTool.file_write_tool
 dir_write_tool = DirWriteTool.dir_write_tool
